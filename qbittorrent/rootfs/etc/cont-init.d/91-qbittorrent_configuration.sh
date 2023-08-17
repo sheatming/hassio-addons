@@ -138,7 +138,7 @@ if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$C
             ;;
 
         "qb-web")
-            curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/CzBiX/qb-web/releases | grep -o "http.*qb-web-.*zip" | head -1)" >/dev/null
+            curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
             ;;
 
     esac
