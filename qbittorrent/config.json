@@ -75,12 +75,13 @@
     "PGID": "0",
     "PUID": "0",
     "SavePath": "/share/qBittorrent",
-    "Username": "admin",
+    "Username": "sheatming",
     "certfile": "fullchain.pem",
     "customUI": "qb-web",
     "keyfile": "privkey.pem",
     "ssl": false,
-    "whitelist": "localhost,127.0.0.1,172.30.0.0/16,192.168.0.0/16"
+    "whitelist": "localhost,127.0.0.1,172.30.0.0/16,192.168.0.0/16,10.0.0.0/16",
+    "openvpn_enabled": false
   },
   "panel_icon": "mdi:progress-download",
   "ports": {
