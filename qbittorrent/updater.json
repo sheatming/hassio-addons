@@ -1,7 +1,7 @@
 {
   "github_fulltag": "false",
   "last_update": "24-06-2023",
-  "repository": "alexbelgium/hassio-addons",
+  "repository": "sheatming/hassio-addons",
   "slug": "qbittorrent",
   "source": "github",
   "upstream_repo": "linuxserver/docker-qbittorrent",
