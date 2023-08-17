@@ -22,15 +22,6 @@ LINE=$((LINE + 1))
 if [ -d "$CONFIG_LOCATION"/addons_config ]; then rm -r "$CONFIG_LOCATION"/addons_config; fi
 if [ -d "$CONFIG_LOCATION"/qBittorrent ]; then rm -r "$CONFIG_LOCATION"/qBittorrent; fi
 
-###########
-# TIMEOUT #
-###########
-
-if bashio::config.has_value 'run_duration'; then
-    echo "Timer mode set"
-else
-    rm -r /etc/services.d/timer
-fi
 
 ##################
 # Default folder #
@@ -82,26 +73,6 @@ sed -i -e '/CSRFProtection/d' \
 # sed -i '/PortRangeMin/d' qBittorrent.conf
 # sed -i "$LINE i\Connection\\\PortRangeMin=6881" qBittorrent.conf
 sed -i "s|6881|59595|g" qBittorrent.conf # Correction if required
-
-################
-# SSL CONFIG   #
-################
-
-# Clean data
-sed -i '/HTTPS/d' qBittorrent.conf
-
-bashio::config.require.ssl
-if bashio::config.true 'ssl'; then
-    bashio::log.info "ssl enabled. If webui don't work, disable ssl or check your certificate paths"
-    #set variables
-    CERTFILE=$(bashio::config 'certfile')
-    KEYFILE=$(bashio::config 'keyfile')
-
-    #Modify configuration
-    sed -i "$LINE i\WebUI\\\HTTPS\\\Enabled=True" qBittorrent.conf
-    sed -i "$LINE i\WebUI\\\HTTPS\\\CertificatePath=/ssl/$CERTFILE" qBittorrent.conf
-    sed -i "$LINE i\WebUI\\\HTTPS\\\KeyPath=/ssl/$KEYFILE" qBittorrent.conf
-fi
 
 ################
 # WHITELIST    #
