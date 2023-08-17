@@ -138,12 +138,14 @@ if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$C
             ;;
 
         "qb-web")
+            bashio::log.info "AAAAAAAAAAAAA UI enabled : $CUSTOMUI. If webui don't work, disable this option"
             curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
             ;;
 
     esac
 
     ### Install WebUI
+    bashio::log.info "BBBBBBBBBBBBB UI enabled : $CUSTOMUI. If webui don't work, disable this option"
     mkdir -p /webui/"$CUSTOMUI"
     unzip -q /webui/release.zip -d /webui/"$CUSTOMUI"
     rm /webui/*.zip
