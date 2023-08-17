@@ -71,13 +71,13 @@
   ],
   "name": "Qbittorrent",
   "options": {
-    "DNS_server": "8.8.8.8,1.1.1.1",
+    "DNS_server": "4.2.2.1,8.8.8.8,1.1.1.1",
     "PGID": "0",
     "PUID": "0",
     "SavePath": "/share/qBittorrent",
     "Username": "admin",
     "certfile": "fullchain.pem",
-    "customUI": "vuetorrent",
+    "customUI": "qb-web",
     "keyfile": "privkey.pem",
     "ssl": false,
     "whitelist": "localhost,127.0.0.1,172.30.0.0/16,192.168.0.0/16"
@@ -129,6 +129,6 @@
     "whitelist": "str?"
   },
   "slug": "qbittorrent",
-  "url": "https://github.com/alexbelgium/hassio-addons",
-  "version": "4.5.4-3"
+  "url": "https://github.com/sheatming/hassio-addons",
+  "version": "4.5.4-4"
 }
