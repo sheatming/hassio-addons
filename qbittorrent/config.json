@@ -58,7 +58,7 @@
   "environment": {
     "PGID": "0",
     "PUID": "0",
-    "WEBUI_PORT": "8080"
+    "WEBUI_PORT": "8704"
   },
   "image": "ghcr.io/alexbelgium/qbittorrent-{arch}",
   "ingress": true,
@@ -88,14 +88,14 @@
     "59595/udp": 59595,
     "6882/tcp": 6882,
     "6882/udp": 6882,
-    "8080/tcp": 8081
+    "8704/tcp": 8704
   },
   "ports_description": {
     "59595/tcp": "Peer port, do not change",
     "59595/udp": "Peer port, do not change",
     "6882/tcp": "Alternative peer port, do not change",
     "6882/udp": "Alternative peer port, do not change",
-    "8080/tcp": "Web UI port (not required for Ingress)"
+    "8704/tcp": "Web UI port (not required for Ingress)"
   },
   "privileged": [
     "SYS_ADMIN",
