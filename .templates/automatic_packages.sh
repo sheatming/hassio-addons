@@ -100,14 +100,6 @@ for files in "/etc/cont-init.d" "/etc/services.d"; do
         [ "$PACKMANAGER" = "pacman" ] && PACKAGES="$PACKAGES dos2unix"
     fi
 
-    COMMAND="openvpn"
-    if grep -q -rnw "$files/" -e "$COMMAND" && ! command -v $COMMAND &>/dev/null; then
-        [ "$VERBOSE" = true ] && echo "$COMMAND required"
-        [ "$PACKMANAGER" = "apk" ] && PACKAGES="$PACKAGES coreutils openvpn"
-        [ "$PACKMANAGER" = "apt" ] && PACKAGES="$PACKAGES coreutils openvpn"
-        [ "$PACKMANAGER" = "pacman" ] && PACKAGES="$PACKAGES coreutils openvpn"
-    fi
-
     COMMAND="jq"
     if grep -q -rnw "$files/" -e "$COMMAND" && ! command -v $COMMAND &>/dev/null; then
         [ "$VERBOSE" = true ] && echo "$COMMAND required"
