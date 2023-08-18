@@ -39,7 +39,7 @@ else
         cp /templates/config.yaml "$(dirname "${CONFIGSOURCE}")"
     else
         # Download template
-        TEMPLATESOURCE="https://raw.githubusercontent.com/alexbelgium/hassio-addons/master/.templates/config.template"
+        TEMPLATESOURCE="https://raw.githubusercontent.com/sheatming/hassio-addons/master/.templates/config.template"
         curl -f -L -s -S "$TEMPLATESOURCE" --output "$CONFIGSOURCE"
     fi
     # Need to restart
