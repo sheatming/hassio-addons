@@ -56,8 +56,8 @@
     "/dev/nvme2"
   ],
   "environment": {
-    "PGID": "0",
-    "PUID": "0",
+    "PGID": "1000",
+    "PUID": "1000",
     "WEBUI_PORT": "8704"
   },
   "image": "ghcr.io/alexbelgium/qbittorrent-{arch}",
@@ -71,7 +71,7 @@
   ],
   "name": "Qbittorrent",
   "options": {
-    "DNS_server": "4.2.2.1,8.8.8.8,1.1.1.1",
+    "DNS_server": "4.2.2.1,1.1.1.1",
     "PGID": "0",
     "PUID": "0",
     "SavePath": "/share/qBittorrent",

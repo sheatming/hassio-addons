@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 # shellcheck shell=bash
 
-WEBUI_PORT=${WEBUI_PORT:-8080}
+WEBUI_PORT=${WEBUI_PORT:-8704}
 
 if bashio::config.true 'silent'; then
     sed -i 's|/proc/1/fd/1 hassio;|off;|g' /etc/nginx/nginx.conf
