@@ -123,43 +123,46 @@ CUSTOMUI=$(bashio::config 'customUI')
 # fi
 
 # Install webui
-if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$CUSTOMUI" = custom ]; then
-    ### Variables
-    bashio::log.info "Alternate UI enabled : $CUSTOMUI. If webui don't work, disable this option"
+# if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$CUSTOMUI" = custom ]; then
+### Variables
+bashio::log.info "Alternate UI enabled : $CUSTOMUI. If webui don't work, disable this option"
 
-    ### Download WebUI
-    case $CUSTOMUI in
-        "vuetorrent")
-            bashio::log.info "vuetorrent"
-            curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/WDaan/VueTorrent/releases/latest | grep -o "http.*vuetorrent.zip" | head -1)" >/dev/null
-            ;;
+### Download WebUI
+# case $CUSTOMUI in
+#     "vuetorrent")
+#         bashio::log.info "vuetorrent"
+#         curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/WDaan/VueTorrent/releases/latest | grep -o "http.*vuetorrent.zip" | head -1)" >/dev/null
+#         ;;
 
-        "qbit-matUI")
-            bashio::log.info "qbit"
-            curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/bill-ahmed/qbit-matUI/releases/latest | grep -o "http.*Unix.*.zip" | head -1)" >/dev/null
-            ;;
+#     "qbit-matUI")
+#         bashio::log.info "qbit"
+#         curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/bill-ahmed/qbit-matUI/releases/latest | grep -o "http.*Unix.*.zip" | head -1)" >/dev/null
+#         ;;
 
-        "qb-web")
-            bashio::log.info "qb-web"
-            curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
-            ;;
+#     "qb-web")
+#         bashio::log.info "qb-web"
+#         curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
+#         ;;
 
-    esac
+# esac
 
-    ### Install WebUI
-    bashio::log.info "BBBBBBBBBBBBB UI enabled : $CUSTOMUI. If webui don't work, disable this option"
-    mkdir -p /webui/"$CUSTOMUI"
-    unzip -q /webui/release.zip -d /webui/"$CUSTOMUI"
-    rm /webui/*.zip
-    CUSTOMUIDIR="$(dirname "$(find /webui/"$CUSTOMUI" -iname "public" -type d)")"
-    # Set qbittorrent
-    sed -i "$LINE i\WebUI\\\AlternativeUIEnabled=true" "$CONFIG_LOCATION"/qBittorrent.conf
-    sed -i "$LINE i\WebUI\\\RootFolder=$CUSTOMUIDIR" "$CONFIG_LOCATION"/qBittorrent.conf
-    # Set nginx
-    #sed -i "s=/vuetorrent/public/=$CUSTOMUIDIR/public/=g" /etc/nginx/servers/ingress.conf
-    #sed -i "s=vue.torrent=$CUSTOMUI.torrent=g" /etc/nginx/servers/ingress.conf
+bashio::log.info "qb-web"
+curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
 
-fi
+### Install WebUI
+bashio::log.info "BBBBBBBBBBBBB UI enabled : $CUSTOMUI. If webui don't work, disable this option"
+mkdir -p /webui/"$CUSTOMUI"
+unzip -q /webui/release.zip -d /webui/"$CUSTOMUI"
+rm /webui/*.zip
+CUSTOMUIDIR="$(dirname "$(find /webui/"$CUSTOMUI" -iname "public" -type d)")"
+# Set qbittorrent
+sed -i "$LINE i\WebUI\\\AlternativeUIEnabled=true" "$CONFIG_LOCATION"/qBittorrent.conf
+sed -i "$LINE i\WebUI\\\RootFolder=$CUSTOMUIDIR" "$CONFIG_LOCATION"/qBittorrent.conf
+# Set nginx
+#sed -i "s=/vuetorrent/public/=$CUSTOMUIDIR/public/=g" /etc/nginx/servers/ingress.conf
+#sed -i "s=vue.torrent=$CUSTOMUI.torrent=g" /etc/nginx/servers/ingress.conf
+
+# fi
 
 ##########
 # CLOSE  #
