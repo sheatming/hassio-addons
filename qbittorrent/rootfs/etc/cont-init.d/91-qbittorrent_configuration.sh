@@ -114,13 +114,13 @@ fi
 CUSTOMUI=$(bashio::config 'customUI')
 
 # Clean data if not custom
-if [ ! "$CUSTOMUI" = custom ]; then
-    sed -i '/AlternativeUIEnabled/d' qBittorrent.conf
-    sed -i '/RootFolder/d' qBittorrent.conf
-    rm -f -r /webui
-    mkdir -p /webui
-    chown abc:abc /webui
-fi
+# if [ ! "$CUSTOMUI" = custom ]; then
+#     sed -i '/AlternativeUIEnabled/d' qBittorrent.conf
+#     sed -i '/RootFolder/d' qBittorrent.conf
+#     rm -f -r /webui
+#     mkdir -p /webui
+#     chown abc:abc /webui
+# fi
 
 # Install webui
 if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$CUSTOMUI" = custom ]; then
