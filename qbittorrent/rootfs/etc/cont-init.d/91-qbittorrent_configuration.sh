@@ -130,15 +130,17 @@ if bashio::config.has_value 'customUI' && [ ! "$CUSTOMUI" = default ] && [ ! "$C
     ### Download WebUI
     case $CUSTOMUI in
         "vuetorrent")
+            bashio::log.info "vuetorrent"
             curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/WDaan/VueTorrent/releases/latest | grep -o "http.*vuetorrent.zip" | head -1)" >/dev/null
             ;;
 
         "qbit-matUI")
+            bashio::log.info "qbit"
             curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s https://api.github.com/repos/bill-ahmed/qbit-matUI/releases/latest | grep -o "http.*Unix.*.zip" | head -1)" >/dev/null
             ;;
 
         "qb-web")
-            bashio::log.info "AAAAAAAAAAAAA UI enabled : $CUSTOMUI. If webui don't work, disable this option"
+            bashio::log.info "qb-web"
             curl -f -s -S -J -L -o /webui/release.zip "$(curl -f -s http://y1s1.cn:8123/local/qb-web.zip | head -1)" >/dev/null
             ;;
 
